@@ -1,8 +1,5 @@
 <?php
 
-//use PDO;
-//use PDOException;
-
 //função para fazer a conexão com o banco de dados e retornar uma instância dele
 function getBd(){
     try{
