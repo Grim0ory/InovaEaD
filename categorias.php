@@ -68,7 +68,7 @@ function processarConfiguracao($configuracao) {
                     if (strpos($curso, '%') !== false) {
                         //busca por cursos que contenham com algum nome especifico
                         if (strpos($curso, '%') === 0 && strrpos($curso, '%') === strlen($curso) - 1) {
-                            $query = "SELECT fullname, shortname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
+                            $query = "SELECT fullname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
                             $stmt = $instancia->query($query);
                             $resultados = $stmt->fetchAll();
                             foreach ($resultados as $resultado){
@@ -81,7 +81,7 @@ function processarConfiguracao($configuracao) {
                             }
                         //busca por cursos que terminam com algum nome especifico
                         } elseif (strpos($curso, '%') === 0) {
-                            $query = "SELECT fullname, shortname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
+                            $query = "SELECT fullname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
                             $stmt = $instancia->query($query);
                             $resultados = $stmt->fetchAll();
                             foreach ($resultados as $resultado){
@@ -94,7 +94,7 @@ function processarConfiguracao($configuracao) {
                             }
                         //busca por cursos que começam com algum nome especifico
                         } elseif (strrpos($curso, '%') === strlen($curso) - 1) {
-                            $query = "SELECT fullname, shortname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
+                            $query = "SELECT fullname FROM mdl_course WHERE  category = {$codigo} and shortname LIKE '{$curso}' ";
                             $stmt = $instancia->query($query);
                             $resultados = $stmt->fetchAll();
                             foreach ($resultados as $resultado){
@@ -192,7 +192,7 @@ function processarConfiguracao($configuracao) {
 $instancia = getBd();
 
 //$config1 = "Ciência da Computação:\n1234: *\nSistemas de Informação:\n4321: %GSI, DAC%, %GCC%, GTI128";
-$config1 = "Ciência da Computação:\n2: GCC%, GAC%\nLetras:\n3: GSI%";
+$config1 = "Ciência da Computação:\n2: %GCC%\nLetras:\n3: GSI%";
 processarConfiguracao($config1);
 
 $config2 = "Ciência da Computação:\n2: 147GCC123";
